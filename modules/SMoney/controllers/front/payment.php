@@ -89,8 +89,8 @@ public function getPayments() {
 
 
   $product_array = $Cart->getProducts();
-  $count = count($product_array);
-  $payments = [];
+  // $count = count($product_array);
+  $payments = array();
   $i=0;
   foreach($product_array as $key => $product_item)
   {
@@ -99,12 +99,12 @@ public function getPayments() {
     $com = ($product_item['total_wt'] * trim(Configuration::get('SMONEY_COMMISSION_'.$product_item['id_supplier']))) / 100;
 
 
-    //$total_price = (float)$product_item['total_wt'] * 100;
+    $total_price = (float)$product_item['total_wt'] * 100;
 
     $payments[] = array(
       'orderId' => $this->orderId.'-'.$i,
       'beneficiary' => array("appaccountid" => trim(Configuration::get('SMONEY_NAME_'.$product_item['id_supplier']))),
-      'amount'  =>  (float)($product_item['total_wt'] - $com) * 100;
+      'amount'  => $total_price - ($com * 100),
       'message' => 'nom :'. $product_item['name'],
       'fee' => $com * 100 
       );
@@ -112,7 +112,7 @@ public function getPayments() {
   } 
   
   
-  $sql = '
+  /*$sql = '
     SELECT value 
     FROM `ps_configuration` 
     WHERE `name` = 'PS_SHIPPING_FREE_PRICE'
@@ -122,10 +122,10 @@ public function getPayments() {
   $freeShipping = Db::getInstance()->getValue($sql);
   $freeShipping = $freeShipping * 100; 
 
-  // var_dump($freeShipping); //debuger $variable
-  // die;
+	var_dump($freeShipping); //debuger $variable
+ 	die; */
   
-  if ($total_price < $freeShipping)
+  if ($total_price < 2500)
   {
        $payments[] = array(
          'orderId' => $this->orderId.'L',
@@ -135,7 +135,6 @@ public function getPayments() {
          'fee' => 0
        ); 
   }
-  */
 
   return $payments;
 }
