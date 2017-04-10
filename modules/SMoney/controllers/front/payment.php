@@ -101,7 +101,7 @@ public function getPayments() {
 
     $total_price = (float)$product_item['total_wt'] * 100;
 
-    $payments[] = array(
+    $payments[$key] = array(
       'orderId' => $this->orderId.'-'.$i,
       'beneficiary' => array("appaccountid" => trim(Configuration::get('SMONEY_NAME_'.$product_item['id_supplier']))),
       'amount'  => $total_price - ($com * 100),
@@ -130,7 +130,7 @@ public function getPayments() {
        $payments[] = array(
          'orderId' => $this->orderId.'L',
          'beneficiary' => ["appaccountid" => 'dropbird-com'],
-         'amount' => 1,
+         'amount' => 100,
          'message' => 'livraison '.$this->orderId,
          'fee' => 0
        ); 
