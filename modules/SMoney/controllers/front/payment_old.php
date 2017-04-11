@@ -87,14 +87,13 @@ public function getPayments() {
   }
 
   $product_array = $Cart->getProducts();
-  $payments = array();                            // Pierre F. : Déclaration du tableau par défaut
-  $i = 0;                                         // Pierre F. : Variable utilisée pour l'ajout au tableau de livraison
 
   foreach($product_array as $key => $product_item)
   {
 
     $supplier = new Supplier((int)$product_item['id_supplier']);
     $com = ($product_item['total_wt'] * trim(Configuration::get('SMONEY_COMMISSION_'.$product_item['id_supplier']))) / 100;
+
 
     $total_price = (float)$product_item['total_wt'] * 100;
 
@@ -106,37 +105,6 @@ public function getPayments() {
       'fee' => $com * 100
       );
   } 
-
-  // Pierre F. : Ajout au tableau du montant de la livraison
-
-  $req_sql = '
-    SELECT value
-    FROM `ps_configuration`
-    WHERE `name` = "PS_SHIPPING_FREE_PRICE"
-    ';                                        // Pierre F. : Récupération de la valeur minimum pour une livraison gratuite
-
-  $req_sql1 = '
-    SELECT value
-    FROM `ps_configuration`
-    WHERE `name` = "PS_TAX"
-    ';                                        // Pierre F. : Récupération du prix de la livraison
-
-  $freeShipping = Db::getInstance()->getValue($req_sql);  
-  $taxShipping = Db::getInstance()->getValue($req_sql1);  
-
-  $freeShipping = $freeShipping * 100;
- 
-  if ($total_price < $freeShipping)           // Pierre F. : Dropbird -> 25€
-  {
-       $payments[] = array(
-         'orderId' => $this->orderId.'-L-'.$i,
-         'beneficiary' => ["appaccountid" => 'dropbird-com'],
-         'amount' => $taxShipping * 100,      // Pierre F. : Dropbird -> 1€
-         'message' => 'livraison '.$this->orderId,
-         'fee' => 0
-       );
-  }
-
   return $payments;
 }
 
