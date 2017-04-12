@@ -1,0 +1,19 @@
+trajets_homepage:
+    path:     /
+    defaults: { _controller: TrajetsBundle:Carte:affichage }
+
+trajets_hello:
+    path:     /hello/{nom}
+    defaults: { _controller: TrajetsBundle:Hello:sayHello }
+
+trajets_ajouter_collecteur:
+    path:     /collecteurs/ajouter
+    defaults: { _controller: TrajetsBundle:Collecteur:Ajout }
+
+trajets_ajouter_boutique:
+    path:     /boutiques/ajouter
+    defaults: { _controller: TrajetsBundle:Boutique:Ajout }
+
+trajets_ajouter_consigne:
+    path:     /consignes/ajouter
+    defaults: { _controller: TrajetsBundle:Consigne:Ajout }

@@ -1,0 +1,3 @@
+trajets:
+    resource: "@TrajetsBundle/Resources/config/routing.yml"
+    prefix:   /
