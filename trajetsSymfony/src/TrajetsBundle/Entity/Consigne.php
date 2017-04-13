@@ -14,9 +14,9 @@ use Doctrine\ORM\Mapping as ORM;
  * Class Consigne
  * @package TrajetsBundle\Entity
  * @ORM\Entity
- * @ORM\Table(name="consignes")
+ * @ORM\Table(name="dpb_consignes")
  */
-class Consigne
+class Consigne implements \JsonSerializable
 {
     /**
      * @ORM\Id
@@ -37,11 +37,11 @@ class Consigne
      */
     private $ville;
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", precision=10, scale=7)
      */
     private $latitude;
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", precision=10, scale=7)
      */
     private $longitude;
 
@@ -174,4 +174,16 @@ class Consigne
     }
 
 
+    /**
+     * Specify data which should be serialized to JSON
+     * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     * which is a value of any type other than a resource.
+     * @since 5.4.0
+     */
+    function jsonSerialize()
+    {
+        $vars = get_object_vars($this);
+        return $vars;
+    }
 }

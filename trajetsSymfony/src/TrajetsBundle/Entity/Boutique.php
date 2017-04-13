@@ -9,14 +9,15 @@
 namespace TrajetsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 /**
  * Class Boutique
  * @package TrajetsBundle\Entity
  * @ORM\Entity
- * @ORM\Table(name="boutiques")
+ * @ORM\Table(name="dpb_boutiques")
  */
-class Boutique
+class Boutique implements JsonSerializable
 {
     /**
      * @ORM\Id
@@ -41,11 +42,11 @@ class Boutique
      */
     private $ville;
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", precision=10, scale=7)
      */
     private $latitude;
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", precision=10, scale=7)
      */
     private $longitude;
 
@@ -195,5 +196,16 @@ class Boutique
             ', ville= ' . $this->getVille() . ', latitude= ' . $this->getLatitude() . ', longitude= ' . $this->getLongitude();
     }
 
-
+    /**
+     * Specify data which should be serialized to JSON
+     * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     * which is a value of any type other than a resource.
+     * @since 5.4.0
+     */
+    function jsonSerialize()
+    {
+        $vars = get_object_vars($this);
+        return $vars;
+    }
 }

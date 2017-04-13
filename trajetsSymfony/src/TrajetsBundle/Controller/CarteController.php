@@ -29,11 +29,8 @@ class CarteController extends Controller
         $repository = $em->getRepository('TrajetsBundle:Collecteur');
         $collecteur = $repository->find(1);
 
-        $serializer = new Serializer(array(new ObjectNormalizer()), array(new JsonEncoder()));
-        $jsonConsignes = $serializer->serialize($consignes, 'json');
-
         return $this->render('TrajetsBundle:Default:index.html.twig',
-            ['consignes' => $jsonConsignes,
+            ['consignes' => $consignes,
             'boutiques' => $boutiques,
             'collecteur' => $collecteur]
             );

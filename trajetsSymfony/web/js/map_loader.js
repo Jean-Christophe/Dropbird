@@ -3,6 +3,8 @@
  */
 var map;
 var markers = [];
+var markersBoutiques = [];
+var markersConsignes = [];
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
@@ -10,61 +12,139 @@ function initMap() {
         zoom: 12
     });
 
-    alert(collecteur);
-    alert(consignes);
-    alert(boutiques);
-
-    var lieux = [
-        {nom: 'Gare de Rennes', localisation: {lat: 48.103497, lng: -1.672278}, type: 'C'},
-        {nom: 'Métro République', localisation: {lat:  48.109684, lng: -1.679258}, type: 'C'},
-        {nom: 'Forum du Livre', localisation: {lat: 48.114494, lng: -1.678114}, type: 'B'},
-        {nom: 'Du Bruit dans la Cuisine', localisation: {lat: 48.082773, lng: -1.679678}, type: 'B'},
-        {nom: 'Coffea', localisation: {lat:  48.104721, lng: -1.679605}, type: 'B'},
-        {nom: 'Confidence des Vignobles', localisation: {lat: 48.10497, lng: -1.65055}, type: 'B'}
-    ];
-
     var largeInfoWindow = new google.maps.InfoWindow();
 
-    // Créer un tableau de marqueurs à partir du tableau de lieux
-    for(var i = 0; i < lieux.length; i++)
+    // Créer un tableau de markers de consignes
+    for(var i = 0; i < consignes.length; i++)
     {
-        var nom = lieux[i].nom;
-        var position = lieux[i].localisation;
+        var idConsigne = consignes[i].id;
+        var nomConsigne = consignes[i].nom;
+        var positionConsigne = {lat: consignes[i].latitude, lng: consignes[i].longitude};
 
-        // Créer un marqueur par lieu, et l'insérer dans le tableau de marqueurs
-        var marker = new google.maps.Marker({
-            // map: map,
-            nom: nom,
-            position: position,
-            label: (i + 1).toString(),
+        var markerConsigne = new google.maps.Marker({
+            nom: nomConsigne,
+            position: positionConsigne,
+            label: 'C',
             animation: google.maps.Animation.DROP,
-            id: i
+            id: idConsigne
         });
-        markers.push(marker);
+        markersConsignes.push(markerConsigne);
+        markers.push(markerConsigne);
 
         // Créer un événement pour ouvrir une infoWindow sur chaque marqueur
-        marker.addListener('click', function () {
+        markerConsigne.addListener('click', function () {
             populateInfoWindow(this, largeInfoWindow); // this : le marqueur qui a été cliqué
         });
-
-        // Evénements liés aux boutons
-        document.getElementById('show_consignes').addEventListener('click', showConsignes);
-        document.getElementById('show_boutiques').addEventListener('click', showBoutiques);
-        document.getElementById('show_all').addEventListener('click', showAll);
-        document.getElementById('hide_all').addEventListener('click', hideAll);
-        document.getElementById('valider_adresse').addEventListener('click', ajouterAdresse);
-        /*document.getElementById('valider_adresse').addEventListener('click', function() {
-         ajouterAdresse();
-         });*/
     }
+
+    // Créer un tableau de markers de boutiques
+    for(var i = 0; i < boutiques.length; i++)
+    {
+        var idBoutique = boutiques[i].id;
+        var nomBoutique = boutiques[i].nom;
+        var positionBoutique = {lat: boutiques[i].latitude, lng: boutiques[i].longitude};
+
+        var markerBoutique = new google.maps.Marker({
+            nom: nomBoutique,
+            position: positionBoutique,
+            label: 'B',
+            animation: google.maps.Animation.DROP,
+            id: idBoutique
+        });
+        markersBoutiques.push(markerBoutique);
+        markers.push(markerBoutique);
+
+        // Créer un événement pour ouvrir une infoWindow sur chaque marqueur
+        markerBoutique.addListener('click', function () {
+            populateInfoWindow(this, largeInfoWindow); // this : le marqueur qui a été cliqué
+        });
+    }
+
+    // Evénements liés aux boutons
+    document.getElementById('show_consignes').addEventListener('click', showConsignes);
+    document.getElementById('hide_consignes').addEventListener('click', hideConsignes);
+    document.getElementById('show_boutiques').addEventListener('click', showBoutiques);
+    document.getElementById('hide_boutiques').addEventListener('click', hideBoutiques);
+    document.getElementById('show_all').addEventListener('click', showAll);
+    document.getElementById('hide_all').addEventListener('click', hideAll);
+    document.getElementById('valider_adresse_depart').addEventListener('click', ajouterAdresse);
 
     function selectionnerDestination() {
 
     }
 
+    /**
+     * Parcourt la réponse et, si la distance est inférieure à la valeur entrée par l'utilisateur,
+     * affiche le lieu sur la carte
+     * @param response
+     */
+    function displayMarkersWithinTime(response) {
+        var origins = response.originAddresses;
+        var destinations = response.destinationAddresses;
+        var maxDuration = document.getElementById('duree_max').value;
+        var atLeastOne = false;
+
+        for(var i = 0; i < origins.length; i++)
+        {
+            var results = response.rows[i].elements;
+            for(var j = 0; j < results.length; j++)
+            {
+                var element = results[j];
+                if(element.status === 'OK')
+                {
+                    var distance = element.distance.value;
+                    var distanceText = element.distance.text;
+                    var duration = element.duration.value / 60;
+                    var durationText = element.duration.text;
+
+                    if(duration <= maxDuration)
+                    {
+                        markers[j].setMap(map);
+                        atLeastOne = true;
+                        var infoWindow = new google.maps.InfoWindow({
+                           content: durationText + ' (' + distanceText + ')'
+                        });
+                        markers[j].infowindow = infoWindow;
+                        markers[j].addListener('mouseover', function() {
+                            this.infowindow.open(map, this);
+                        });
+                        markers[j].addListener('mouseout', function() {
+                            this.infowindow.close();
+                        });
+                    }
+                }
+            }
+        }
+    }
+
+    function searchWithinTime(depart) {
+        var distanceMatrixService = new google.maps.DistanceMatrixService;
+        // On efface tous les markers pour n'afficher que ceux qui entrent dans la durée indiquée
+        hideAll();
+        var destinations = [];
+        for(var i = 0; i < markers.length; i++)
+        {
+            destinations[i] = markers[i].position;
+        }
+        var mode = document.getElementById('moyen_locomotion').value;
+        distanceMatrixService.getDistanceMatrix({
+            origins: [depart.position],
+            destinations: destinations,
+            travelMode: google.maps.TravelMode[mode],
+        }, function(response, status) {
+            if(status !== google.maps.DistanceMatrixStatus.OK) {
+                window.alert('Erreur : ' + status);
+            }
+            else {
+                displayMarkersWithinTime(response);
+            }
+        })
+    }
+
     function ajouterAdresse() {
         var geocoder = new google.maps.Geocoder();
-        var adresse = document.getElementById('nouvelle_adresse').value;
+        var adresse = document.getElementById('adresse_depart').value;
+
         if(adresse == ''){
             window.alert('Le champ est vide.');
         }
@@ -83,7 +163,7 @@ function initMap() {
                         var marker = new google.maps.Marker({
                             nom: adresse.toString(),
                             position: results[0].geometry.location,
-                            label: 'N',
+                            label: 'D',
                             animation: google.maps.Animation.DROP
                         });
                         marker.setMap(map);
@@ -92,8 +172,8 @@ function initMap() {
                         });
                         var lat = results[0].geometry.location.lat();
                         var long = results[0].geometry.location.lng();
-                        console.log(lat);
-                        console.log(long);
+                        var depart = {name: adresse.toString(), position: {lat: lat, lng: long}};
+                        searchWithinTime(depart);
                     }
                     else {
                         window.alert('Erreur de géocodage : ' . status);
@@ -103,18 +183,42 @@ function initMap() {
         }
     }
 
-    /**
-     * TODO
-     */
     function showConsignes() {
-
+        var bounds = new google.maps.LatLngBounds();
+        // Etendre les frontières de la carte pour chaque marqueur
+        // Et lier le marqueur à la carte
+        for(var i = 0; i < markersConsignes.length; i++)
+        {
+            markersConsignes[i].setMap(map);
+            bounds.extend(markersConsignes[i].position);
+        }
+        map.fitBounds(bounds);
     }
 
-    /**
-     * TODO
-     */
-    function showBoutiques() {
+    function hideConsignes() {
+        for(var i = 0; i < markersConsignes.length; i++)
+        {
+            markersConsignes[i].setMap(null);
+        }
+    }
 
+    function showBoutiques() {
+        var bounds = new google.maps.LatLngBounds();
+        // Etendre les frontières de la carte pour chaque marqueur
+        // Et lier le marqueur à la carte
+        for(var i = 0; i < markersBoutiques.length; i++)
+        {
+            markersBoutiques[i].setMap(map);
+            bounds.extend(markersBoutiques[i].position);
+        }
+        map.fitBounds(bounds);
+    }
+
+    function hideBoutiques() {
+        for(var i = 0; i < markersBoutiques.length; i++)
+        {
+            markersBoutiques[i].setMap(null);
+        }
     }
 
     /**
