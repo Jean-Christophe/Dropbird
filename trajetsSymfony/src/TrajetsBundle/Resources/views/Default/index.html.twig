@@ -55,6 +55,8 @@
 
 {% block javascripts %}
     <script>
+        // Initialisation des variables globales collecteur, consignes et boutiques
+        // utiles dans map_loader.js
         collecteur = {{ collecteur|json_encode|raw }};
 
         consignes = [];
