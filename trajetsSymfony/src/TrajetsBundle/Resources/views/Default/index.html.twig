@@ -6,47 +6,62 @@
         <div class="options-box">
             <h1>Calcul du trajet</h1>
             {{ app.session.get('collecteur') }}
-            <div>
+            <div id="prepa_trajet">
                 <input id="show_consignes" type="button" value="Montrer les consignes" />
                 <input id="hide_consignes" type="button" value="Cacher les consignes" />
                 <input id="show_boutiques" type="button" value="Montrer les boutiques" />
                 <input id="hide_boutiques" type="button" value="Cacher les boutiques" />
                 <input id="show_all" type="button" value="Montrer tout" />
                 <input id="hide_all" type="button" value="Cacher tout" />
+                <hr />
                 <div>
                     <div>
-                        <span class="text">Destination</span>
-                        <select id="origine">
-                            <optgroup label="Boutiques">
-                                {% for boutique in boutiques  %}
-                                    <option class="id_boutique" value="{{ boutique.id }}">{{ boutique.nom }}</option>
-                                {% endfor %}
-                            </optgroup>
-                            <optgroup label="Consignes">
-                                {% for consigne in consignes  %}
-                                    <option class="id_consigne" value="{{ consigne.id }}">{{ consigne.nom }}</option>
-                                {% endfor %}
-                            </optgroup>
-                        </select>
-                    </div>
-                    <div>
-                        <span class="text">Durée max.</span>
-                        <select id="duree_max">
-                            <option value="10">10 min</option>
-                            <option value="15">15 min</option>
-                            <option value="30">30 min</option>
-                        </select>
-                        <select id="moyen_locomotion">
-                            <option value="BICYCLING">à vélo</option>
-                            <option value="DRIVING">en voiture</option>
-                        </select>
                         <div id="adresse_origine">
                             <span class="text">Départ</span>
                             <input id="adresse_depart" type="text" placeholder="Ex. : Métro République, Rennes" />
+                        </div>
+                        <div>
+                            <span class="text">Afficher les lieux à moins de<br /></span>
+                            <select id="duree_max">
+                                <option value="10">10 min</option>
+                                <option value="15">15 min</option>
+                                <option value="30">30 min</option>
+                            </select>
+                            <select id="moyen_locomotion">
+                                <option value="BICYCLING">à vélo</option>
+                                <option value="DRIVING">en voiture</option>
+                            </select>
                             <input id="valider_adresse_depart" type="button" value="Valider" />
                         </div>
+                        <hr />
+                        <div>
+                            <span class="text">Etapes<br />
+                                Ajouter</span>
+                            <select id="etapes">
+                                <option value="#">A compléter</option>
+                            </select>
+                        </div>
+                        <div>
+                        <span class="text">Destination</span>
+                            <select id="origine">
+                                <optgroup id="optBoutiques" label="Boutiques">
+                                    {% for boutique in boutiques  %}
+                                        <option class="id_boutique" value="{{ boutique.id }}">{{ boutique.nom }}</option>
+                                    {% endfor %}
+                                </optgroup>
+                                <optgroup id="optConsignes" label="Consignes">
+                                    {% for consigne in consignes  %}
+                                        <option class="id_consigne" value="{{ consigne.id }}">{{ consigne.nom }}</option>
+                                    {% endfor %}
+                                </optgroup>
+                            </select>
+                        </div>
                     </div>
+                        <input id="calculer_trajet" type="button" value="Calculer" />
                 </div>
+            </div>
+            <div id="itineraire">
+
             </div>
         </div>
         <div id="map"></div>

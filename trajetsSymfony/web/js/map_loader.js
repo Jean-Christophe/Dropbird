@@ -7,6 +7,10 @@ var markersBoutiques = [];
 var markersConsignes = [];
 var largeInfoWindow;
 var infoWindow;
+var depart;
+var etapes = [];
+var destination;
+var idArrivee;
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
@@ -15,6 +19,7 @@ function initMap() {
     });
 
     largeInfoWindow = new google.maps.InfoWindow();
+    idArrivee = document.getElementById('origine').value;
 
     initMarkersConsignes();
     initMarkersBoutiques();
@@ -80,6 +85,14 @@ function initButtonsEvents() {
     document.getElementById('show_all').addEventListener('click', showAll);
     document.getElementById('hide_all').addEventListener('click', hideAll);
     document.getElementById('valider_adresse_depart').addEventListener('click', selectDeparture);
+    document.getElementById('origine').addEventListener('change', function() {
+       idArrivee = document.getElementById('origine').value;
+    });
+    document.getElementById('calculer_trajet').addEventListener('click', tests);
+}
+
+function tests(){
+    initMap();
 }
 
 function showConsignes() {
@@ -173,7 +186,7 @@ function selectDeparture() {
                     });
                     var lat = results[0].geometry.location.lat();
                     var long = results[0].geometry.location.lng();
-                    var depart = {name: adresse.toString(), position: {lat: lat, lng: long}};
+                    depart = {name: adresse.toString(), position: {lat: lat, lng: long}};
                     searchWithinTime(depart);
                 }
                 else {
@@ -184,6 +197,11 @@ function selectDeparture() {
     }
 }
 
+/**
+ * Afficher des lieux en fonction du lieu de départ, du mode de transport et de la durée maximale de trajet
+ * entrée par l'utilisateur
+ * @param depart
+ */
 function searchWithinTime(depart) {
     var distanceMatrixService = new google.maps.DistanceMatrixService;
     // On efface tous les markers pour n'afficher que ceux qui entrent dans la durée indiquée
@@ -253,15 +271,133 @@ function displayMarkersWithinTime(response) {
 }
 
 /**
+ * Retourne une étape en fonction d'un label (B pour boutiques, C pour consignes) et d'un id
+ * @param label
+ * @param id
+ * @returns {*}
+ */
+function getLocation(label, id){
+    var etape;
+    switch (label) {
+        case 'B':
+            for(var i = 0; i < boutiques.length; i++)
+            {
+                if(boutiques[i].id === parseInt(id))
+                {
+                    etape = boutiques[i];
+                }
+            }
+            break;
+        case 'C':
+            for(var i = 0; i < consignes.length; i++)
+            {
+                if(consignes[i].id === parseInt(id))
+                {
+                    etape = consignes[i];
+                }
+            }
+            break;
+        default:
+            console.log('Label incorrect');
+    }
+    return etape;
+}
+
+function addStep(label, id) {
+    // Crée une étape avec un label (B ou C) et un id
+    var etape = getLocation(label, id);
+    var coordEtape = new google.maps.LatLng(etape.latitude, etape.longitude);
+    var wayPoint = {location: coordEtape, stopover: true};
+    var positionEtape = {lat: etape.latitude, lng: etape.longitude};
+    console.log('Nouvelle étape :');
+    console.log(etape);
+    if(destination === null){
+        destination = etape;
+        displayDirections(positionEtape);
+    }
+    else{
+        etapes.push(wayPoint);
+    }
+}
+
+function setDestination(label, id) {
+    // Crée une destination avec un label (B ou C) et un id
+    destination = getLocation(label, id);
+    var positionDestination = {lat: destination.latitude, lng: destination.longitude};
+    console.log('Tableau d\'étapes');
+    console.log(etapes);
+    //TODO
+    idArrivee = id;
+    alert(idArrivee);
+    switch(label) {
+        case 'B':
+
+            break;
+        case 'C':
+
+            break;
+    }
+    displayDirections(positionDestination);
+}
+
+/**
+ * Affiche la route vers la destination sur la carte
+ * @param destination
+ */
+function displayDirections(destination){
+    hideAll();
+    var directionsService = new google.maps.DirectionsService;
+    var mode = document.getElementById('moyen_locomotion').value;
+    directionsService.route({
+        origin: depart.position,
+        destination: destination,
+        waypoints: etapes,
+        optimizeWaypoints: true,
+        travelMode: google.maps.TravelMode[mode]
+    }, function(response, status) {
+        if(status === google.maps.DirectionsStatus.OK){
+            var directionsDisplay = new google.maps.DirectionsRenderer({
+                map: map,
+                directions: response,
+                draggable: true,
+                polylineOptions: {
+                    strokeColor: 'blue'
+                }
+            });
+
+            //TODO
+            // Afficher l'itinéraire écrit
+            var route = response.routes[0];
+            var resume = document.getElementById('itineraire');
+            resume.innerHTML = '';
+            for(var i = 0; i < route.legs.length; i++){
+                var routeSegment = i + 1;
+                resume.innerHTML += '<b>Segment : ' + routeSegment + '</b><br />';
+                resume.innerHTML += route.legs[i].start_address + ' à ';
+                resume.innerHTML += route.legs[i].end_address + '<br />';
+                resume.innerHTML += route.legs[i].distance.text + '<br />';
+                resume.innerHTML += route.legs[i].duration.text + '<br /><br />';
+                for(var j = 0; j < route.legs[i].length; j++) {
+                    resume.innerHTML += route.legs[i].steps[j].html_instructions + '<br /><br />';
+                }
+
+            }
+        } else{
+            window.alert('Erreur : ' + status);
+        }
+    });
+}
+
+/**
  * Remplit l'infoWindow quand le marqueur est cliqué.
  * Un seul infoWindow à la fois
  * @param marker
- * @param infoWindow
+ * @param largeInfoWindow
  */
 function populateLargeInfoWindow(marker, largeInfoWindow){
 
     // Un seul infoWindow à la fois
-    if(largeInfoWindow.marker != marker)
+    if(largeInfoWindow.marker !== marker)
     {
         largeInfoWindow.setContent('');
         largeInfoWindow.marker = marker;
@@ -298,7 +434,11 @@ function populateLargeInfoWindow(marker, largeInfoWindow){
          streetViewService.getPanoramaByLocation(marker.position, radius, getStreetView);
          */
 
-        largeInfoWindow.setContent('<div><h1>' + marker.nom + '</h1><p>Position : ' + marker.position + '</p></div>');
+        // Ajout de boutons à l'InfoWindow pour ajouter une étape ou une destination au trajet
+        largeInfoWindow.setContent('<div><h1>' + marker.nom + '</h1><p>Position : ' + marker.position + '</p></div>' +
+            '<div><input type="button" value="Ajouter une étape" onclick="addStep(\'' + marker.label + '\',\'' + marker.id + '\')" /></div>' +
+            '<div><input type="button" value="Définir comme destination" onclick="setDestination(\'' + marker.label + '\',\'' + marker.id + '\')" /></div>');
         largeInfoWindow.open(map, marker);
+
     }
 }
