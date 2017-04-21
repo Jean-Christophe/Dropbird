@@ -19,11 +19,9 @@ class CarteController extends Controller
     public function affichageAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $repository = $em->getRepository('TrajetsBundle:Consigne');
-        $consignes = $repository->findAll();
-
-        $repository = $em->getRepository('TrajetsBundle:Boutique');
-        $boutiques = $repository->findAll();
+        $repository = $em->getRepository('TrajetsBundle:Lieu');
+        $boutiques = $repository->findBy(array('label' => 'B'));
+        $consignes = $repository->findBy(array('label' => 'C'));
 
         $repository = $em->getRepository('TrajetsBundle:Collecteur');
         $collecteur = $repository->find(1);

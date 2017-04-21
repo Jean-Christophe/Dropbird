@@ -28,8 +28,8 @@
       <file leaf-file-name="CarteController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TrajetsBundle/Controller/CarteController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="19" column="5" lean-forward="false" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+            <state relative-caret-position="187">
+              <caret line="20" column="49" lean-forward="false" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
               <folding>
                 <element signature="e#130#187#0#PHP" expanded="true" />
               </folding>
@@ -50,12 +50,12 @@
       <file leaf-file-name="map_loader.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/js/map_loader.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="375" column="21" lean-forward="false" selection-start-line="369" selection-start-column="16" selection-end-line="369" selection-end-column="21" />
+            <state relative-caret-position="429">
+              <caret line="448" column="42" lean-forward="false" selection-start-line="448" selection-start-column="42" selection-end-line="448" selection-end-column="42" />
               <folding>
                 <element signature="e#0#46#0" expanded="false" />
-                <element signature="n#!!block;n#initMarkersConsignes#0" expanded="false" />
                 <element signature="n#!!block;n#initMarkersBoutiques#0" expanded="false" />
+                <element signature="n#!!block;n#tests#0" expanded="false" />
                 <element signature="n#!!block;n#showConsignes#0" expanded="false" />
                 <element signature="n#!!block;n#hideConsignes#0" expanded="false" />
                 <element signature="n#!!block;n#showBoutiques#0" expanded="false" />
@@ -63,25 +63,25 @@
                 <element signature="n#!!doc;n#showAll#0" expanded="false" />
                 <element signature="n#!!block;n#showAll#0" expanded="false" />
                 <element signature="n#!!block;n#hideAll#0" expanded="false" />
-                <element signature="n#!!block;n#selectDeparture#0" expanded="false" />
                 <element signature="n#!!doc;n#searchWithinTime#0" expanded="false" />
                 <element signature="n#!!block;n#searchWithinTime#0" expanded="false" />
                 <element signature="n#!!doc;n#displayMarkersWithinTime#0" expanded="false" />
                 <element signature="n#!!block;n#displayMarkersWithinTime#0" expanded="false" />
-                <element signature="n#!!block;n#getLocation#0" expanded="false" />
+                <element signature="n#!!doc;n#getLocation#0" expanded="false" />
+                <element signature="n#!!block;n#addStep#0" expanded="false" />
+                <element signature="n#!!block;n#addEtape#0" expanded="false" />
+                <element signature="n#!!block;n#setDestination#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BoutiqueController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/TrajetsBundle/Controller/BoutiqueController.php">
+      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="17" column="95" lean-forward="false" selection-start-line="17" selection-start-column="95" selection-end-line="17" selection-end-column="95" />
-              <folding>
-                <element signature="e#130#187#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="153">
+              <caret line="9" column="84" lean-forward="false" selection-start-line="9" selection-start-column="84" selection-end-line="9" selection-end-column="84" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -89,8 +89,28 @@
       <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TrajetsBundle/Resources/views/Default/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="641">
+              <caret line="44" column="32" lean-forward="false" selection-start-line="44" selection-start-column="32" selection-end-line="44" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style_perso.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/css/style_perso.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="376">
+              <caret line="27" column="22" lean-forward="false" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="basic_style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/css/basic_style.css">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="65" column="14" lean-forward="false" selection-start-line="65" selection-start-column="14" selection-end-line="65" selection-end-column="14" />
+              <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -102,37 +122,43 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="CSS File" />
         <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>seria</find>
-      <find>hideB</find>
-      <find>hideC</find>
-      <find>vali</find>
-      <find>label</find>
-      <find>infoWindow</find>
-      <find>popula</find>
-      <find>largeInfoWindow</find>
-      <find>populate</find>
-      <find>populateLargeInfoWindow</find>
-      <find>destinations[</find>
-      <find>posi</find>
-      <find>var marker</find>
-      <find>destination</find>
-      <find>arrivee</find>
-      <find>getLocation</find>
-      <find>large</find>
-      <find>marker</find>
-      <find>idArrivee</find>
-      <find>setDestination</find>
       <find>console</find>
-      <find>etapes</find>
-      <find>directionsSer</find>
-      <find>false</find>
+      <find>idArri</find>
+      <find>adresse_depart</find>
+      <find>adresse</find>
+      <find>duree_max</find>
+      <find>id_boutique</find>
+      <find>consol</find>
+      <find>addEtape</find>
+      <find>getLocation</find>
+      <find>addStep</find>
+      <find>label</find>
+      <find>origine</find>
+      <find>setDes</find>
+      <find>selectDeparture</find>
+      <find>selectDe</find>
+      <find>valider_adresse_depart</find>
+      <find>setMap</find>
+      <find>change</find>
+      <find>depart</find>
+      <find>etape</find>
+      <find>positionDestination</find>
+      <find>destination</find>
+      <find>setDestination</find>
+      <find>displayDirections</find>
+      <find>itiner</find>
+      <find>afficher_lieux</find>
+      <find>prepa_trajet</find>
+      <find>Le cha</find>
+      <find>Ex.</find>
+      <find>populateLargeInfoWindow</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -142,7 +168,6 @@
         <option value="$PROJECT_DIR$/app/AppKernel.php" />
         <option value="$PROJECT_DIR$/src/TrajetsBundle/Controller/HelloController.php" />
         <option value="$PROJECT_DIR$/web/basic_style.css" />
-        <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
         <option value="$PROJECT_DIR$/app/config/parameters.yml" />
         <option value="$PROJECT_DIR$/src/TrajetsBundle/Controller/CollecteurManager.php" />
         <option value="$PROJECT_DIR$/src/TrajetsBundle/Resources/views/Default/tests.html" />
@@ -156,8 +181,12 @@
         <option value="$PROJECT_DIR$/src/TrajetsBundle/Entity/Collecteur.php" />
         <option value="$PROJECT_DIR$/src/TrajetsBundle/Entity/Boutique.php" />
         <option value="$PROJECT_DIR$/src/TrajetsBundle/Entity/Consigne.php" />
-        <option value="$PROJECT_DIR$/src/TrajetsBundle/Resources/views/Default/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/TrajetsBundle/Repository/LieuRepository.php" />
         <option value="$PROJECT_DIR$/src/TrajetsBundle/Controller/CarteController.php" />
+        <option value="$PROJECT_DIR$/src/TrajetsBundle/Entity/Lieu.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
+        <option value="$PROJECT_DIR$/src/TrajetsBundle/Resources/views/Default/index.html.twig" />
+        <option value="$PROJECT_DIR$/web/css/style_perso.css" />
         <option value="$PROJECT_DIR$/web/js/map_loader.js" />
       </list>
     </option>
@@ -241,8 +270,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -266,24 +293,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="trajetsSymfony" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="trajetsSymfony" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -355,6 +364,54 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trajetsSymfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trajetsSymfony" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TrajetsBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trajetsSymfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trajetsSymfony" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TrajetsBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Entity" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -369,7 +426,51 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TrajetsBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controller" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trajetsSymfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trajetsSymfony" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trajetsSymfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trajetsSymfony" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -393,6 +494,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -404,6 +507,9 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\trajetsSymfony\web\css" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\trajetsSymfony\web\css" />
     </key>
@@ -509,25 +615,31 @@
       <workItem from="1492243526717" duration="18000" />
       <workItem from="1492291030136" duration="348000" />
       <workItem from="1492498072184" duration="17254000" />
+      <workItem from="1492584868120" duration="8327000" />
+      <workItem from="1492622394311" duration="21000" />
+      <workItem from="1492633990562" duration="13000" />
+      <workItem from="1492670975612" duration="19521000" />
+      <workItem from="1492757315723" duration="20434000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93493000" />
+    <option name="totallyTimeSpent" value="141809000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -567,73 +679,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/js/map_loader.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#46#0" expanded="false" />
-            <element signature="n#!!block;n#initMarkersConsignes#0" expanded="false" />
-            <element signature="n#!!block;n#initMarkersBoutiques#0" expanded="false" />
-            <element signature="n#!!block;n#showConsignes#0" expanded="false" />
-            <element signature="n#!!block;n#hideConsignes#0" expanded="false" />
-            <element signature="n#!!block;n#showBoutiques#0" expanded="false" />
-            <element signature="n#!!block;n#hideBoutiques#0" expanded="false" />
-            <element signature="n#!!doc;n#showAll#0" expanded="false" />
-            <element signature="n#!!block;n#showAll#0" expanded="false" />
-            <element signature="n#!!block;n#hideAll#0" expanded="false" />
-            <element signature="n#!!block;n#selectDeparture#0" expanded="false" />
-            <element signature="n#!!doc;n#searchWithinTime#0" expanded="false" />
-            <element signature="n#!!block;n#searchWithinTime#0" expanded="false" />
-            <element signature="n#!!doc;n#displayMarkersWithinTime#0" expanded="false" />
-            <element signature="n#!!block;n#displayMarkersWithinTime#0" expanded="false" />
-            <element signature="n#!!block;n#getLocation#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TrajetsBundle/Controller/BoutiqueController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="17" column="95" lean-forward="false" selection-start-line="17" selection-start-column="95" selection-end-line="17" selection-end-column="95" />
-          <folding>
-            <element signature="e#130#187#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TrajetsBundle/Entity/Boutique.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="10" lean-forward="false" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
-          <folding>
-            <element signature="e#1006#1195#0#PHP" expanded="false" />
-            <element signature="e#1538#1570#0#PHP" expanded="false" />
-            <element signature="e#1642#1674#0#PHP" expanded="false" />
-            <element signature="e#1748#1780#0#PHP" expanded="false" />
-            <element signature="e#1862#1894#0#PHP" expanded="false" />
-            <element signature="e#1968#2000#0#PHP" expanded="false" />
-            <element signature="e#2078#2110#0#PHP" expanded="false" />
-            <element signature="e#2194#2226#0#PHP" expanded="false" />
-            <element signature="e#2312#2347#0#PHP" expanded="false" />
-            <element signature="e#2443#2479#0#PHP" expanded="false" />
-            <element signature="e#2579#2619#0#PHP" expanded="false" />
-            <element signature="e#2735#2771#0#PHP" expanded="false" />
-            <element signature="e#2871#2909#0#PHP" expanded="false" />
-            <element signature="e#3017#3058#0#PHP" expanded="false" />
-            <element signature="e#3178#3220#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TrajetsBundle/Resources/views/Default/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="952">
-          <caret line="56" column="50" lean-forward="false" selection-start-line="56" selection-start-column="50" selection-end-line="56" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/TrajetsBundle/Resources/config/routing.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -686,7 +731,7 @@
         <state relative-caret-position="187">
           <caret line="17" column="95" lean-forward="false" selection-start-line="17" selection-start-column="95" selection-end-line="17" selection-end-column="95" />
           <folding>
-            <element signature="e#130#187#0#PHP" expanded="true" />
+            <element signature="e#130#187#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -712,8 +757,8 @@
           <caret line="12" column="28" lean-forward="false" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
           <folding>
             <element signature="e#0#46#0" expanded="false" />
-            <element signature="n#!!block;n#initMarkersConsignes#0" expanded="false" />
             <element signature="n#!!block;n#initMarkersBoutiques#0" expanded="false" />
+            <element signature="n#!!block;n#tests#0" expanded="false" />
             <element signature="n#!!block;n#showConsignes#0" expanded="false" />
             <element signature="n#!!block;n#hideConsignes#0" expanded="false" />
             <element signature="n#!!block;n#showBoutiques#0" expanded="false" />
@@ -721,12 +766,14 @@
             <element signature="n#!!doc;n#showAll#0" expanded="false" />
             <element signature="n#!!block;n#showAll#0" expanded="false" />
             <element signature="n#!!block;n#hideAll#0" expanded="false" />
-            <element signature="n#!!block;n#selectDeparture#0" expanded="false" />
             <element signature="n#!!doc;n#searchWithinTime#0" expanded="false" />
             <element signature="n#!!block;n#searchWithinTime#0" expanded="false" />
             <element signature="n#!!doc;n#displayMarkersWithinTime#0" expanded="false" />
             <element signature="n#!!block;n#displayMarkersWithinTime#0" expanded="false" />
-            <element signature="n#!!block;n#getLocation#0" expanded="false" />
+            <element signature="n#!!doc;n#getLocation#0" expanded="false" />
+            <element signature="n#!!block;n#addStep#0" expanded="false" />
+            <element signature="n#!!block;n#addEtape#0" expanded="false" />
+            <element signature="n#!!block;n#setDestination#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -842,14 +889,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app_dev.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-15">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -860,13 +899,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TrajetsBundle/Controller/HelloController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="14" column="1" lean-forward="false" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/app.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -874,45 +906,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/css/basic_style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TrajetsBundle/Controller/CollecteurController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TrajetsBundle/Controller/ConsigneController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="18" column="93" lean-forward="false" selection-start-line="18" selection-start-column="93" selection-end-line="18" selection-end-column="93" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="28" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -953,37 +950,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TrajetsBundle/Resources/config/routing.yml">
+    <entry file="file://$PROJECT_DIR$/src/TrajetsBundle/Controller/HelloController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="32" lean-forward="false" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+        <state relative-caret-position="136">
+          <caret line="14" column="1" lean-forward="false" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+    <entry file="file://$PROJECT_DIR$/src/TrajetsBundle/Controller/CollecteurController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="22" lean-forward="false" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
+        <state relative-caret-position="102">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TrajetsBundle/Controller/ConsigneController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="18" column="93" lean-forward="false" selection-start-line="18" selection-start-column="93" selection-end-line="18" selection-end-column="93" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/TrajetsBundle/Controller/BoutiqueController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
+        <state relative-caret-position="204">
           <caret line="17" column="95" lean-forward="false" selection-start-line="17" selection-start-column="95" selection-end-line="17" selection-end-column="95" />
           <folding>
-            <element signature="e#130#187#0#PHP" expanded="true" />
+            <element signature="e#130#187#0#PHP" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app_dev.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/TrajetsBundle/Entity/Boutique.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="48" column="30" lean-forward="false" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
+        <state relative-caret-position="-2320">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
+            <element signature="e#126#158#0#PHP" expanded="false" />
             <element signature="e#1006#1195#0#PHP" expanded="false" />
             <element signature="e#1538#1570#0#PHP" expanded="false" />
             <element signature="e#1642#1674#0#PHP" expanded="false" />
@@ -1003,32 +1023,106 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TrajetsBundle/Resources/views/Default/index.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/TrajetsBundle/Repository/LieuRepository.php" />
+    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="65" column="14" lean-forward="false" selection-start-line="65" selection-start-column="14" selection-end-line="65" selection-end-column="14" />
+        <state relative-caret-position="442">
+          <caret line="26" column="22" lean-forward="false" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TrajetsBundle/Resources/config/routing.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="32" lean-forward="false" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/TrajetsBundle/Controller/CarteController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="19" column="5" lean-forward="false" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        <state relative-caret-position="187">
+          <caret line="20" column="49" lean-forward="false" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
           <folding>
             <element signature="e#130#187#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/TrajetsBundle/Entity/Lieu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="44" column="54" lean-forward="false" selection-start-line="44" selection-start-column="54" selection-end-line="44" selection-end-column="54" />
+          <folding>
+            <element signature="e#1074#1263#0#PHP" expanded="false" />
+            <element signature="e#1647#1679#0#PHP" expanded="false" />
+            <element signature="e#1751#1783#0#PHP" expanded="false" />
+            <element signature="e#1857#1889#0#PHP" expanded="false" />
+            <element signature="e#1971#2003#0#PHP" expanded="false" />
+            <element signature="e#2077#2109#0#PHP" expanded="false" />
+            <element signature="e#2187#2219#0#PHP" expanded="false" />
+            <element signature="e#2303#2335#0#PHP" expanded="false" />
+            <element signature="e#2421#2453#0#PHP" expanded="false" />
+            <element signature="e#2531#2566#0#PHP" expanded="false" />
+            <element signature="e#2662#2698#0#PHP" expanded="false" />
+            <element signature="e#2798#2838#0#PHP" expanded="false" />
+            <element signature="e#2954#2990#0#PHP" expanded="false" />
+            <element signature="e#3090#3128#0#PHP" expanded="false" />
+            <element signature="e#3236#3277#0#PHP" expanded="false" />
+            <element signature="e#3397#3439#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/css/bootstrap-theme.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/css/basic_style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="84" lean-forward="false" selection-start-line="9" selection-start-column="84" selection-end-line="9" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TrajetsBundle/Resources/views/Default/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="641">
+          <caret line="44" column="32" lean-forward="false" selection-start-line="44" selection-start-column="32" selection-end-line="44" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/css/style_perso.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="27" column="22" lean-forward="false" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/js/map_loader.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="375" column="21" lean-forward="false" selection-start-line="369" selection-start-column="16" selection-end-line="369" selection-end-column="21" />
+        <state relative-caret-position="429">
+          <caret line="448" column="42" lean-forward="false" selection-start-line="448" selection-start-column="42" selection-end-line="448" selection-end-column="42" />
           <folding>
             <element signature="e#0#46#0" expanded="false" />
-            <element signature="n#!!block;n#initMarkersConsignes#0" expanded="false" />
             <element signature="n#!!block;n#initMarkersBoutiques#0" expanded="false" />
+            <element signature="n#!!block;n#tests#0" expanded="false" />
             <element signature="n#!!block;n#showConsignes#0" expanded="false" />
             <element signature="n#!!block;n#hideConsignes#0" expanded="false" />
             <element signature="n#!!block;n#showBoutiques#0" expanded="false" />
@@ -1036,12 +1130,14 @@
             <element signature="n#!!doc;n#showAll#0" expanded="false" />
             <element signature="n#!!block;n#showAll#0" expanded="false" />
             <element signature="n#!!block;n#hideAll#0" expanded="false" />
-            <element signature="n#!!block;n#selectDeparture#0" expanded="false" />
             <element signature="n#!!doc;n#searchWithinTime#0" expanded="false" />
             <element signature="n#!!block;n#searchWithinTime#0" expanded="false" />
             <element signature="n#!!doc;n#displayMarkersWithinTime#0" expanded="false" />
             <element signature="n#!!block;n#displayMarkersWithinTime#0" expanded="false" />
-            <element signature="n#!!block;n#getLocation#0" expanded="false" />
+            <element signature="n#!!doc;n#getLocation#0" expanded="false" />
+            <element signature="n#!!block;n#addStep#0" expanded="false" />
+            <element signature="n#!!block;n#addEtape#0" expanded="false" />
+            <element signature="n#!!block;n#setDestination#0" expanded="false" />
           </folding>
         </state>
       </provider>

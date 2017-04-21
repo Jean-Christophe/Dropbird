@@ -2,28 +2,31 @@
  * Created by jeanc_000 on 11/04/2017.
  */
 var map;
+var markerDepart = null;
 var markers = [];
 var markersBoutiques = [];
 var markersConsignes = [];
 var largeInfoWindow;
 var infoWindow;
-var depart;
+var depart = {name: "Dépôt", position: {lat: 48.10926, lng: -1.63429}};
 var etapes = [];
 var destination;
-var idArrivee;
+var premierBlurDepart = true;
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 48.1127671, lng: -1.6424174},
-        zoom: 12
+        zoom: 13
     });
 
     largeInfoWindow = new google.maps.InfoWindow();
-    idArrivee = document.getElementById('origine').value;
 
     initMarkersConsignes();
     initMarkersBoutiques();
     initButtonsEvents();
+
+    // Destination par défaut : le premier élément de la liste
+    destination = getLocation(1);
 }
 
 function initMarkersConsignes() {
@@ -84,15 +87,28 @@ function initButtonsEvents() {
     document.getElementById('hide_boutiques').addEventListener('click', hideBoutiques);
     document.getElementById('show_all').addEventListener('click', showAll);
     document.getElementById('hide_all').addEventListener('click', hideAll);
-    document.getElementById('valider_adresse_depart').addEventListener('click', selectDeparture);
-    document.getElementById('origine').addEventListener('change', function() {
-       idArrivee = document.getElementById('origine').value;
+    document.getElementById('adresse_depart').addEventListener('blur', selectDeparture);
+    document.getElementById('duree_max').addEventListener('change', function() {
+        searchWithinTime(depart);
     });
-    document.getElementById('calculer_trajet').addEventListener('click', tests);
+    document.getElementById('moyen_locomotion').addEventListener('change', function() {
+        searchWithinTime(depart);
+    });
+    document.getElementById('ajouter_etape').addEventListener('click', function(){
+        var select = document.getElementById('etapes');
+        addStep(select.value);
+    });
+    document.getElementById('destination').addEventListener('change', function(){
+        setDestination(this.value)
+    });
+    document.getElementById('calculer_trajet').addEventListener('click', function(){
+        displayDirections();
+    });
 }
 
 function tests(){
-    initMap();
+    var select = document.getElementById('etapes');
+    console.log(select.value);
 }
 
 function showConsignes() {
@@ -156,11 +172,21 @@ function hideAll() {
 }
 
 function selectDeparture() {
+    // Si c'est la première fois que le focus quitte l'input Départ et si le champ n'est pas vide,
+    // on affiche le filtrage des lieux par distance et par moyen de locomation, ainsi que
+    // l'ajout d'étapes et de la destination
+    if(premierBlurDepart && document.getElementById('adresse_depart').value !== '')
+    {
+        document.getElementById('afficher_lieux').style.display = 'block';
+        document.getElementById('editer_trajet').style.display = 'block';
+        premierBlurDepart = false;
+    }
+    hideAll();
     var geocoder = new google.maps.Geocoder();
     var adresse = document.getElementById('adresse_depart').value;
 
     if(adresse === ''){
-        window.alert('Le champ est vide.');
+        window.alert('Le champ "Départ" est vide.');
     }
     else{
         geocoder.geocode(
@@ -173,21 +199,23 @@ function selectDeparture() {
             },
             function(results, status) {
                 if(status === google.maps.GeocoderStatus.OK) {
+                    if(markerDepart !== null) {
+                        markerDepart.setMap(null);
+                    }
                     map.setCenter(results[0].geometry.location);
-                    var marker = new google.maps.Marker({
+                    markerDepart = new google.maps.Marker({
                         nom: adresse.toString(),
                         position: results[0].geometry.location,
                         label: 'D',
                         animation: google.maps.Animation.DROP
                     });
-                    marker.setMap(map);
-                    marker.addListener('click', function () {
+                    markerDepart.setMap(map);
+                    markerDepart.addListener('click', function () {
                         populateLargeInfoWindow(this, largeInfoWindow); // this : le marqueur qui a été cliqué
                     });
                     var lat = results[0].geometry.location.lat();
                     var long = results[0].geometry.location.lng();
                     depart = {name: adresse.toString(), position: {lat: lat, lng: long}};
-                    searchWithinTime(depart);
                 }
                 else {
                     window.alert('Erreur de géocodage : ' . status);
@@ -203,6 +231,7 @@ function selectDeparture() {
  * @param depart
  */
 function searchWithinTime(depart) {
+    console.log('Entrée dans searchWithinTime');
     var distanceMatrixService = new google.maps.DistanceMatrixService;
     // On efface tous les markers pour n'afficher que ceux qui entrent dans la durée indiquée
     hideAll();
@@ -271,86 +300,66 @@ function displayMarkersWithinTime(response) {
 }
 
 /**
- * Retourne une étape en fonction d'un label (B pour boutiques, C pour consignes) et d'un id
- * @param label
+ * Retourne une étape en fonction d'un id
  * @param id
  * @returns {*}
  */
-function getLocation(label, id){
-    var etape;
-    switch (label) {
-        case 'B':
-            for(var i = 0; i < boutiques.length; i++)
-            {
-                if(boutiques[i].id === parseInt(id))
-                {
-                    etape = boutiques[i];
-                }
-            }
-            break;
-        case 'C':
-            for(var i = 0; i < consignes.length; i++)
-            {
-                if(consignes[i].id === parseInt(id))
-                {
-                    etape = consignes[i];
-                }
-            }
-            break;
-        default:
-            console.log('Label incorrect');
+function getLocation(id){
+    var etape = null;
+    for(var i = 0; i < lieux.length; i++)
+    {
+        if(lieux[i].id === parseInt(id))
+        {
+            etape = lieux[i];
+        }
+    }
+    if(etape === null)
+    {
+        console.log('Label incorrect');
     }
     return etape;
 }
 
-function addStep(label, id) {
-    // Crée une étape avec un label (B ou C) et un id
-    var etape = getLocation(label, id);
+function addStep(id) {
+    // Crée une étape avec un id
+    var etape = getLocation(id);
+
+    addEtape(etape);
+}
+
+function addEtape(etape) {
     var coordEtape = new google.maps.LatLng(etape.latitude, etape.longitude);
     var wayPoint = {location: coordEtape, stopover: true};
-    var positionEtape = {lat: etape.latitude, lng: etape.longitude};
-    console.log('Nouvelle étape :');
-    console.log(etape);
+    //var positionEtape = {lat: etape.latitude, lng: etape.longitude};
     if(destination === null){
         destination = etape;
-        displayDirections(positionEtape);
+        setDestination(etape.id);
     }
     else{
         etapes.push(wayPoint);
     }
 }
 
-function setDestination(label, id) {
-    // Crée une destination avec un label (B ou C) et un id
-    destination = getLocation(label, id);
-    var positionDestination = {lat: destination.latitude, lng: destination.longitude};
-    console.log('Tableau d\'étapes');
-    console.log(etapes);
-    //TODO
-    idArrivee = id;
-    alert(idArrivee);
-    switch(label) {
-        case 'B':
+function setDestination(id) {
+    var select = document.getElementById('destination');
+    select.value = id;
 
-            break;
-        case 'C':
 
-            break;
-    }
-    displayDirections(positionDestination);
+    // Crée une destination avec un id
+    destination = getLocation(id);
 }
 
 /**
  * Affiche la route vers la destination sur la carte
- * @param destination
  */
-function displayDirections(destination){
+function displayDirections(){
     hideAll();
+    var positionDestination = {lat: destination.latitude, lng: destination.longitude};
     var directionsService = new google.maps.DirectionsService;
     var mode = document.getElementById('moyen_locomotion').value;
     directionsService.route({
         origin: depart.position,
-        destination: destination,
+        destination: positionDestination,
         waypoints: etapes,
         optimizeWaypoints: true,
         travelMode: google.maps.TravelMode[mode]
@@ -364,23 +373,21 @@ function displayDirections(destination){
                     strokeColor: 'blue'
                 }
             });
-
-            //TODO
             // Afficher l'itinéraire écrit
+            console.log(response);
             var route = response.routes[0];
             var resume = document.getElementById('itineraire');
             resume.innerHTML = '';
             for(var i = 0; i < route.legs.length; i++){
                 var routeSegment = i + 1;
-                resume.innerHTML += '<b>Segment : ' + routeSegment + '</b><br />';
+                resume.innerHTML += '<hr /><hr /><b>Segment : ' + routeSegment + '</b><br />';
                 resume.innerHTML += route.legs[i].start_address + ' à ';
                 resume.innerHTML += route.legs[i].end_address + '<br />';
                 resume.innerHTML += route.legs[i].distance.text + '<br />';
-                resume.innerHTML += route.legs[i].duration.text + '<br /><br />';
-                for(var j = 0; j < route.legs[i].length; j++) {
-                    resume.innerHTML += route.legs[i].steps[j].html_instructions + '<br /><br />';
+                resume.innerHTML += route.legs[i].duration.text + '<br /><hr />';
+                for(var j = 0; j < route.legs[i].steps.length; j++) {
+                    resume.innerHTML += route.legs[i].steps[j].instructions + '<br /><br />';
                 }
-
             }
         } else{
             window.alert('Erreur : ' + status);
@@ -436,9 +443,9 @@ function populateLargeInfoWindow(marker, largeInfoWindow){
 
         // Ajout de boutons à l'InfoWindow pour ajouter une étape ou une destination au trajet
         largeInfoWindow.setContent('<div><h1>' + marker.nom + '</h1><p>Position : ' + marker.position + '</p></div>' +
-            '<div><input type="button" value="Ajouter une étape" onclick="addStep(\'' + marker.label + '\',\'' + marker.id + '\')" /></div>' +
-            '<div><input type="button" value="Définir comme destination" onclick="setDestination(\'' + marker.label + '\',\'' + marker.id + '\')" /></div>');
+            '<div class="marker_editer_trajet"><input type="button" value="Ajouter une étape" onclick="addStep(\'' + marker.id + '\')" /></div>' +
+            '<div class="marker_editer_trajet"><input type="button" value="Définir comme destination" onclick="setDestination(\'' + marker.id + '\')" /></div>'
+        );
         largeInfoWindow.open(map, marker);
-
     }
 }

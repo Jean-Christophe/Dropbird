@@ -1,0 +1,34 @@
+
+#map{
+    height: 100vh;
+}
+
+
+h1{
+    font-size: 1.6em;
+}
+
+#prepa_trajet p{
+    margin: 5px 0 0 0;
+}
+
+#prepa_trajet .form-control{
+    margin-bottom: 5px;
+}
+
+#duree_max, #moyen_locomotion{
+    display: inline-block;
+    width: 45%;
+}
+
+#valider_calcul{
+    margin-top: 10px;
+}
+
+#valider_calcul input{
+    min-width: 80%;
+}
+
+#afficher_lieux, #editer_trajet, #valider_calcul, .marker_editer_trajet{
+    display: none;
+}
