@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Optimisation de trajets - Admin{% endblock %}
+
+{% block body %}
+    <p>{{ app.user.username }}</p>
+    <h1>Gestion des lieux</h1>
+    <div class="row">
+        <div class="col-sm-6">
+            <ul>
+                {% for boutique in boutiques %}
+                    <li>{{ boutique.__toString() }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-sm-6">
+            <ul>
+                {% for consigne in consignes %}
+                    <li>{{ consigne.__toString() }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

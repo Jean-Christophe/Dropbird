@@ -3,6 +3,18 @@
     height: 100vh;
 }
 
+.fixed{
+    position: fixed;
+    right: 0;
+    padding-right: 0;
+}
+
+#lien_admin{
+    position: absolute;
+    top: 0.5vw;
+    right: 0;
+    z-index: 1;
+}
 
 h1{
     font-size: 1.6em;
@@ -29,6 +41,15 @@ h1{
     min-width: 80%;
 }
 
-#afficher_lieux, #editer_trajet, #valider_calcul, .marker_editer_trajet{
+#afficher_lieux, #editer_trajet, #valider_calcul, .marker_editer_trajet, #resume_trajet{
     display: none;
+}
+
+#resume_trajet{
+    border-bottom: solid #eee 1px;
+}
+
+#resume_trajet .label{
+    color: black;
+    font-size: 1.1em;
 }

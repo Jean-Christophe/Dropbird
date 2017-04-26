@@ -2,18 +2,28 @@ trajets_homepage:
     path:     /
     defaults: { _controller: TrajetsBundle:Carte:affichage }
 
-trajets_hello:
-    path:     /hello/{nom}
-    defaults: { _controller: TrajetsBundle:Hello:sayHello }
-
 trajets_ajouter_collecteur:
     path:     /collecteurs/ajouter
-    defaults: { _controller: TrajetsBundle:Collecteur:Ajout }
+    defaults: { _controller: TrajetsBundle:Collecteur:ajout }
 
 trajets_ajouter_boutique:
     path:     /boutiques/ajouter
-    defaults: { _controller: TrajetsBundle:Boutique:Ajout }
+    defaults: { _controller: TrajetsBundle:Boutique:ajout }
 
 trajets_ajouter_consigne:
     path:     /consignes/ajouter
-    defaults: { _controller: TrajetsBundle:Consigne:Ajout }
+    defaults: { _controller: TrajetsBundle:Consigne:ajout }
+
+trajets_login:
+    path:     /login
+    defaults: { _controller: TrajetsBundle:Security:login }
+
+trajets_login_check:
+    path:     /login_check
+
+trajets_logout:
+    path:     /logout
+
+trajets_admin:
+    path:     /admin
+    defaults: { _controller: TrajetsBundle:Admin:list }

@@ -5,8 +5,15 @@
     <div class="container-fluid">
         <div class="row">
                 <div class="col-sm-3" id="texte_gauche">
+                    <a id="lien_admin" href="{{ url('trajets_admin') }}">admin</a>
                     <h1 class="text-center">Optimisation de trajet</h1>
-                    <div id="resume_trajet"></div>
+                    <div id="resume_trajet" class="row">
+                        <div class="col-sm-12"><span class="label">Départ : </span><span id="depart"></span></div>
+                        <div class="col-sm-12"><span class="label">Etapes : </span>
+                            <ul id="liste_etapes"></ul>
+                        </div>
+                        <div class="col-sm-12"><span class="label">Destination : </span><span id="arrivee"></span></div>
+                    </div>
                     <div id="prepa_trajet">
                         <div class="row form-group">
                             <p class="col-md-4">Consignes :</p>
@@ -60,7 +67,7 @@
                                         <input class="btn btn-success form-control" id="ajouter_etape" type="button" value="Ajouter" />
                                     </div>
                                     <div>
-                                    <label for="destination">Destination</label>
+                                    <label for="destination">Destination :</label>
                                         <select id="destination" class="form-control">
                                             <optgroup id="optBoutiques" label="Boutiques">
                                                 {% for boutique in boutiques  %}
@@ -83,7 +90,7 @@
                     </div>
                     <div id="itineraire"></div>
                 </div>
-            <div class="col-sm-9">
+            <div class="col-sm-9 fixed">
                 <div id="map"></div>
             </div>
         </div>
