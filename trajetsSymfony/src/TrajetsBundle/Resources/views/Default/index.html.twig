@@ -5,6 +5,13 @@
     <div class="container-fluid">
         <div class="row">
                 <div class="col-sm-3" id="texte_gauche">
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        Connecté en tant que {{ app.user.username }}
+                        -
+                        <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+                    {% else %}
+                        <a href="{{ path('fos_user_security_login') }}">Connexion</a>
+                    {% endif %}
                     <a id="lien_admin" href="{{ url('trajets_admin') }}">admin</a>
                     <h1 class="text-center">Optimisation de trajet</h1>
                     <div id="resume_trajet" class="row">

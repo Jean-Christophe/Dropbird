@@ -1,3 +1,7 @@
+trajets_tests:
+    path:     /tests
+    defaults: { _controller: TrajetsBundle:Test:index }
+
 trajets_homepage:
     path:     /
     defaults: { _controller: TrajetsBundle:Carte:affichage }
@@ -14,16 +18,6 @@ trajets_ajouter_consigne:
     path:     /consignes/ajouter
     defaults: { _controller: TrajetsBundle:Consigne:ajout }
 
-trajets_login:
-    path:     /login
-    defaults: { _controller: TrajetsBundle:Security:login }
-
-trajets_login_check:
-    path:     /login_check
-
-trajets_logout:
-    path:     /logout
-
 trajets_admin:
     path:     /admin
-    defaults: { _controller: TrajetsBundle:Admin:list }
+    defaults: { _controller: TrajetsBundle:Admin:index }

@@ -9,7 +9,8 @@
 namespace TrajetsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
+use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Collecteur
@@ -17,44 +18,40 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Entity
  * @ORM\Table(name="dpb_utilisateurs")
  */
-class Utilisateur implements UserInterface, \Serializable, \JsonSerializable
+class Utilisateur extends BaseUser implements \Serializable, \JsonSerializable
 {
     /**
      * @ORM\Id
      * @ORM\Column(name="id", type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\Column(type="string", length=80)
+     *
+     * @Assert\NotBlank(message="Veuillez saisir votre nom.", groups={"Registration", "Profile"})
+     * @Assert\Length(
+     *     min="3",
+     *     max="80",
+     *     minMessage="Le nom est trop court (3 caractères minimum).",
+     *     maxMessage="Le nom est trop long (80 caractères maximum).",
+     *     groups={"Registration", "Profile"})
      */
-    private $nom;
+    protected $nom;
 
     /**
      * @ORM\Column(type="string", length=80)
+     *
+     * @Assert\NotBlank(message="Veuillez saisir votre prénom.", groups={"Registration", "Profile"})
+     * @Assert\Length(
+     *     min="2",
+     *     max="80",
+     *     minMessage="Le prénom est trop court (2 caractères minimum).",
+     *     maxMessage="Le prénom est trop long (80 caractères maximum).",
+     *     groups={"Registration", "Profile"})
      */
-    private $prenom;
-
-    /**
-     * @ORM\Column(type="string", length=80, unique=true)
-     */
-    private $email;
-
-    /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $password;
-
-    /**
-     * @ORM\Column(type="string", length=20)
-     */
-    private $statut;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $estActif;
+    protected $prenom;
 
 
     /**
@@ -82,38 +79,6 @@ class Utilisateur implements UserInterface, \Serializable, \JsonSerializable
     }
 
     /**
-     * @return mixed
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStatut()
-    {
-        return $this->statut;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEstActif()
-    {
-        return $this->estActif;
-    }
-
-    /**
      * @param mixed $id
      */
     public function setId($id)
@@ -138,39 +103,6 @@ class Utilisateur implements UserInterface, \Serializable, \JsonSerializable
     }
 
     /**
-     * @param mixed $email
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    }
-
-    /**
-     * @param mixed $password
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-    }
-
-    /**
-     * @param mixed $statut
-     */
-    public function setStatut($statut)
-    {
-        $this->statut = $statut;
-    }
-
-    /**
-     * @param mixed $estActif
-     */
-    public function setEstActif($estActif)
-    {
-        $this->estActif = $estActif;
-    }
-
-
-    /**
      * Utilisateur constructor.
      * @param $id
      * @param $nom
@@ -180,21 +112,17 @@ class Utilisateur implements UserInterface, \Serializable, \JsonSerializable
      * @param $statut
      * @param $estActif
      */
-    public function __construct($id, $nom, $prenom, $email, $password, $statut, $estActif)
+    /*public function __construct($nom, $prenom)
     {
-        $this->setId($id);
+        parent::__construct();
         $this->setNom($nom);
         $this->setPrenom($prenom);
-        $this->setEmail($email);
-        $this->setPassword($password);
-        $this->setStatut($statut);
-        $this->setEstActif($estActif);
-    }
+    }*/
 
     function __toString()
     {
         return 'id= ' . $this->getId() . ', nom= ' . $this->getNom() . ', prenom= ' . $this->getPrenom() . ', e-mail= ' . $this->getEmail() .
-                ', password= ' . $this->getPassword() . ', statut= ' .$this->getStatut() . ', estActif= ' .$this->getEstActif();
+                ', password= ' . $this->getPassword() . ', roles= ' .$this->getRoles();
     }
 
     /**
@@ -211,27 +139,6 @@ class Utilisateur implements UserInterface, \Serializable, \JsonSerializable
     }
 
     /**
-     * Returns the roles granted to the user.
-     *
-     * <code>
-     * public function getRoles()
-     * {
-     *     return array('ROLE_USER');
-     * }
-     * </code>
-     *
-     * Alternatively, the roles might be stored on a ``roles`` property,
-     * and populated in any number of different ways when the user object
-     * is created.
-     *
-     * @return (Role|string)[] The user roles
-     */
-    public function getRoles()
-    {
-        // TODO: Implement getRoles() method.
-    }
-
-    /**
      * Returns the salt that was originally used to encode the password.
      *
      * This can return null if the password was not encoded using a salt.
@@ -241,16 +148,6 @@ class Utilisateur implements UserInterface, \Serializable, \JsonSerializable
     public function getSalt()
     {
         return null;
-    }
-
-    /**
-     * Returns the username used to authenticate the user.
-     *
-     * @return string The username
-     */
-    public function getUsername()
-    {
-        return $this->getEmail();
     }
 
     /**

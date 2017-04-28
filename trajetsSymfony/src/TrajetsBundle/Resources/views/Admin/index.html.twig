@@ -1,0 +1,71 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Optimisation de trajets - Admin{% endblock %}
+
+{% block body %}
+    <div class="container">
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            Connecté en tant que {{ app.user.username }}
+            -
+            <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+        {% else %}
+            <a href="{{ path('fos_user_security_login') }}">Connexion</a>
+        {% endif %}
+        <h1 class="text-center">Gestion des lieux</h1>
+        <div class="text-center">
+            <a href="#"><button id="btn_ajout_lieu" class="btn btn-primary">Ajouter un lieu</button></a>
+        </div>
+        <div class="row">
+            <div class="col-md-5 col-sm-6">
+                <h2>Boutiques</h2>
+                {% for boutique in boutiques %}
+                    <dl>
+                        <dt>{{ boutique.nom }}
+                            <a href="#"><span class="glyphicon glyphicon-edit"></span></a>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <a href="#"><span class="glyphicon glyphicon-trash"></span></a></li>
+                            {% endif %}</dt>
+                        <dd>{{ boutique.adresse }},<br />{{ boutique.cpo }} {{ boutique.ville }}<br />
+                        Latitude : {{ boutique.latitude }}<br />
+                        Longitude : {{ boutique.longitude }}</dd>
+                    </dl>
+                {% endfor %}
+            </div>
+            <div class="col-md-offset-2 col-md-5 col-sm-6">
+                <h2>Consignes</h2>
+                {% for consigne in consignes %}
+                    <dl>
+                        <dt>{{ consigne.nom }}
+                            <a href="#"><span class="glyphicon glyphicon-edit"></span></a>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <a href="#"><span class="glyphicon glyphicon-trash"></span></a></li>
+                            {% endif %}</dt>
+                        <dd>{{ consigne.adresse }},<br />{{ consigne.cpo }} {{ consigne.ville }}<br />
+                            Latitude : {{ consigne.latitude }}<br />
+                            Longitude : {{ consigne.longitude }}</dd>
+                    </dl>
+                {% endfor %}
+            </div>
+        </div>
+
+        {% if is_granted('ROLE_ADMIN') %}
+            <h1 class="text-center">Gestion des utilisateurs</h1>
+            <div class="text-center">
+                <a href="#"><button id="btn_ajout_utilisateur" class="btn btn-primary">Ajouter un utilisateur</button></a>
+            </div>
+            <div class="row">
+                {% for utilisateur in utilisateurs %}
+                    <dl class="col-lg-3 col-md-4 col-sm-6">
+                        <dt>{{ utilisateur.prenom }} {{ utilisateur.nom }}
+                            <a href="#"><span class="glyphicon glyphicon-edit"></span></a>
+                            <a href="#"><span class="glyphicon glyphicon-trash"></span></a>
+                        </dt>
+                        <dd>Nom d'utilisateur : {{ utilisateur.username }}<br />
+                        E-mail : {{ utilisateur.email }}<br />
+                        Actif : {{ utilisateur.enabled }}</dd>
+                    </dl>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
