@@ -9,6 +9,7 @@
 namespace TrajetsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use JsonSerializable;
 
 /**
@@ -26,30 +27,44 @@ class Lieu implements JsonSerializable
      */
     private $id;
     /**
+     * @Assert\NotBlank()
+     * @Assert\Length(max="150")
      * @ORM\Column(type="string", length=150)
      */
     private $nom;
     /**
+     * @Assert\NotBlank()
+     * @Assert\Length(max="250")
      * @ORM\Column(type="string", length=250)
      */
     private $adresse;
     /**
+     * @Assert\NotBlank()
+     * @Assert\Regex("/^[0-9]{5}$/")
      * @ORM\Column(name="code_postal", type="integer")
      */
     private $cpo;
     /**
+     * @Assert\NotBlank()
+     * @Assert\Length(max="150")
      * @ORM\Column(type="string", length=150)
      */
     private $ville;
     /**
-     * @ORM\Column(type="float", precision=10, scale=6)
+     * @Assert\NotBlank()
+     * @Assert\Length(max="10")
+     * @ORM\Column(type="float")
      */
     private $latitude;
     /**
-     * @ORM\Column(type="float", precision=10, scale=6)
+     * @Assert\NotBlank()
+     * @Assert\Length(max="10")
+     * @ORM\Column(type="float")
      */
     private $longitude;
     /**
+     * @Assert\NotBlank()
+     * @Assert\Length(max="1")
      * @ORM\Column(type="string", length=1)
      */
     private $label;
@@ -64,8 +79,9 @@ class Lieu implements JsonSerializable
      * @param $latitude
      * @param $longitude
      */
-    public function __construct($id, $nom, $adresse, $cpo, $ville, $latitude, $longitude, $label)
+    public function __construct(/*$id, $nom, $adresse, $cpo, $ville, $latitude, $longitude, $label*/)
     {
+        /*
         $this->setId($id);
         $this->setNom($nom);
         $this->setAdresse($adresse);
@@ -74,6 +90,7 @@ class Lieu implements JsonSerializable
         $this->setLatitude($latitude);
         $this->setLongitude($longitude);
         $this->setLabel($label);
+        */
     }
 
     /**

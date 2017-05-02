@@ -57,3 +57,8 @@ h1{
 #btn_ajout_utilisateur{
     margin-bottom: 5px;
 }
+
+#bouton_valider{
+    text-align: right;
+    margin-top: 20px;
+}

@@ -10,14 +10,10 @@ trajets_ajouter_collecteur:
     path:     /collecteurs/ajouter
     defaults: { _controller: TrajetsBundle:Collecteur:ajout }
 
-trajets_ajouter_boutique:
-    path:     /boutiques/ajouter
-    defaults: { _controller: TrajetsBundle:Boutique:ajout }
-
-trajets_ajouter_consigne:
-    path:     /consignes/ajouter
-    defaults: { _controller: TrajetsBundle:Consigne:ajout }
-
 trajets_admin:
     path:     /admin
     defaults: { _controller: TrajetsBundle:Admin:index }
+
+trajets_ajouter_lieu:
+    path:     /admin/ajouter-lieu
+    defaults: { _controller: TrajetsBundle:Admin:ajoutLieu }
