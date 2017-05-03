@@ -54,6 +54,25 @@ h1{
     font-size: 1.1em;
 }
 
+.divACentrer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+.divACentrer button{
+    font-size: 2em;
+    width: 500px;
+    height: 80px;
+    margin-bottom: 80px;
+}
+
+#boutiques a, #consignes a{
+    font-size: 0.5em;
+}
+
 #btn_ajout_utilisateur{
     margin-bottom: 5px;
 }

@@ -23,13 +23,9 @@ class CarteController extends Controller
         $boutiques = $repository->findBy(array('label' => 'B'));
         $consignes = $repository->findBy(array('label' => 'C'));
 
-        $repository = $em->getRepository('TrajetsBundle:Collecteur');
-        $collecteur = $repository->find(1);
-
         return $this->render('TrajetsBundle:Default:index.html.twig',
             ['consignes' => $consignes,
-            'boutiques' => $boutiques,
-            'collecteur' => $collecteur]
+            'boutiques' => $boutiques]
             );
     }
 

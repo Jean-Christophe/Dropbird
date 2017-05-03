@@ -11,6 +11,17 @@
         {% else %}
             <a href="{{ path('fos_user_security_login') }}">Connexion</a>
         {% endif %}
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="divACentrer row">
+            <div class="text-center">
+                <a href="{{ path('lieu_index') }}"><button class="btn btn-lg btn-primary">Gestion des lieux</button></a>
+            </div>
+            <div class="text-center">
+                <a href="#"><button class="btn btn-lg btn-primary">Gestion des utilisateurs</button></a>
+            </div>
+        </div>
+    {% else %}
         <h1 class="text-center">Gestion des lieux</h1>
         <div class="text-center">
             <a href="{{ path('trajets_ajouter_lieu') }}"><button id="btn_ajout_lieu" class="btn btn-primary">Ajouter un lieu</button></a>
@@ -21,7 +32,7 @@
                 {% for boutique in boutiques %}
                     <dl>
                         <dt>{{ boutique.nom }}
-                            <a href="#"><span class="glyphicon glyphicon-edit"></span></a>
+                            <a href="{{ path('trajets_modifier_lieu', {'id': boutique.id} ) }}"><span class="glyphicon glyphicon-edit"></span></a>
                             {% if is_granted('ROLE_ADMIN') %}
                                 <a href="#"><span class="glyphicon glyphicon-trash"></span></a></li>
                             {% endif %}</dt>
@@ -36,7 +47,7 @@
                 {% for consigne in consignes %}
                     <dl>
                         <dt>{{ consigne.nom }}
-                            <a href="#"><span class="glyphicon glyphicon-edit"></span></a>
+                            <a href="{{ path('trajets_modifier_lieu', {'id': consigne.id} ) }}"><span class="glyphicon glyphicon-edit"></span></a>
                             {% if is_granted('ROLE_ADMIN') %}
                                 <a href="#"><span class="glyphicon glyphicon-trash"></span></a></li>
                             {% endif %}</dt>
@@ -67,5 +78,7 @@
                 {% endfor %}
             </div>
         {% endif %}
+
+    {% endif %}
     </div>
 {% endblock %}

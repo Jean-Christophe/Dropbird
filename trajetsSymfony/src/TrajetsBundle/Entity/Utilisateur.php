@@ -13,7 +13,7 @@ use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Class Collecteur
+ * Class Utilisateur
  * @package TrajetsBundle\Entity
  * @ORM\Entity
  * @ORM\Table(name="dpb_utilisateurs")

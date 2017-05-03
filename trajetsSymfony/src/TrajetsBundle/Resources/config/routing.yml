@@ -6,14 +6,10 @@ trajets_homepage:
     path:     /
     defaults: { _controller: TrajetsBundle:Carte:affichage }
 
-trajets_ajouter_collecteur:
-    path:     /collecteurs/ajouter
-    defaults: { _controller: TrajetsBundle:Collecteur:ajout }
-
 trajets_admin:
     path:     /admin
     defaults: { _controller: TrajetsBundle:Admin:index }
 
-trajets_ajouter_lieu:
-    path:     /admin/ajouter-lieu
-    defaults: { _controller: TrajetsBundle:Admin:ajoutLieu }
+trajets_lieux:
+    resource: "@TrajetsBundle/Resources/config/routing/lieu.yml"
+    prefix:   /lieux
