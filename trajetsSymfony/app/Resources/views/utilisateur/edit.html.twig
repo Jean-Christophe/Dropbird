@@ -13,6 +13,11 @@
             <a href="{{ path('fos_user_security_login') }}">Connexion</a>
         {% endif %}
         <h1 class="text-center">Modifier un utilisateur</h1>
+        {% if app.request.query.get("message") is defined and app.request.query.get("message") is not empty %}
+            <div id="message" class="alert alert-info">
+                <p>{{ app.request.query.get("message") }}</p>
+            </div>
+        {% endif %}
 
         {{ form_start(edit_form) }}
 

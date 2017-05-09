@@ -89,7 +89,7 @@ class UtilisateurController extends Controller
             $utilisateur->setRoles($role);
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('utilisateurs_edit', array('id' => $utilisateur->getId()));
+            return $this->redirectToRoute('utilisateurs_edit', array('id' => $utilisateur->getId(), 'message' => 'La modification a été effectuée avec succès.'));
         }
 
         return $this->render('utilisateur/edit.html.twig', array(

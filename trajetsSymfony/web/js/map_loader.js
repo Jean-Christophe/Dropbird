@@ -104,8 +104,6 @@ function initButtonsEvents() {
     });
     document.getElementById('ajouter_etape').addEventListener('click', function(){
         var select = document.getElementById('etapes');
-        console.log('select value :');
-        console.log(select.value);
         addStep(select.value);
     });
     document.getElementById('destination').addEventListener('change', function(){
@@ -259,6 +257,7 @@ function selectDeparture() {
 
                     afficherDepart();
                     afficherDestination();
+                    searchWithinTime(depart);
                 }
                 else {
                     window.alert('Erreur de géocodage : ' . status);
@@ -403,7 +402,6 @@ function displayDirections(){
         optimizeWaypoints: true,
         travelMode: google.maps.TravelMode[mode]
     }, function(response, status) {
-        console.log(response);
         if(status === google.maps.DirectionsStatus.OK){
             directionsDisplay = new google.maps.DirectionsRenderer({
                 map: map,
@@ -415,19 +413,36 @@ function displayDirections(){
             });
             // Afficher l'itinéraire écrit
             var route = response.routes[0];
-            var resume = document.getElementById('itineraire');
-            resume.innerHTML = '<button class="btn btn-primary" onclick="reinitialiser()">&larr; Retour</button>';
+            var nbMetres = 0;
+            var nbSecondes = 0;
+            var detailResume = '';
             for(var i = 0; i < route.legs.length; i++){
+                nbMetres += route.legs[i].distance.value;
+                nbSecondes += route.legs[i].duration.value;
                 var routeSegment = i + 1;
-                resume.innerHTML += '<p><b>Segment ' + routeSegment + ' sur ' + route.legs.length + '</b></p>';
-                resume.innerHTML += route.legs[i].start_address + ' à <br />';
-                resume.innerHTML += route.legs[i].end_address + '<br />';
-                resume.innerHTML += route.legs[i].distance.text + '<br />';
-                resume.innerHTML += route.legs[i].duration.text + '<br /><hr />';
+
+                detailResume += '<hr />';
+                detailResume += '<p><b>Segment ' + routeSegment + ' sur ' + route.legs.length + '</b></p>';
+                detailResume += route.legs[i].start_address + '<br />';
+                detailResume += 'à<br />';
+                detailResume += route.legs[i].end_address + '<br />';
+                detailResume += route.legs[i].distance.text + '<br />';
+                detailResume += route.legs[i].duration.text + '<br /><hr />';
                 for(var j = 0; j < route.legs[i].steps.length; j++) {
-                    resume.innerHTML += '<p>' + route.legs[i].steps[j].instructions + '</p>';
+                    detailResume += '<p>' + route.legs[i].steps[j].instructions + '</p>';
                 }
             }
+            var nbKilometres = nbMetres / 1000;
+            var minutes = Math.floor(nbSecondes / 60);
+            var resume = document.getElementById('itineraire');
+            resume.innerHTML = '<button id="bouton_retour" class="btn btn-primary" onclick="reinitialiser()">&larr; Retour</button>';
+            resume.innerHTML += '<hr />';
+            resume.innerHTML += 'Itinéraire de ' + depart.name + '<br />';
+            resume.innerHTML += 'à <br />';
+            resume.innerHTML +=  destination.nom + ', ' + destination.ville + '<br />';
+            resume.innerHTML += nbKilometres + ' km - ' + minutes + ' minutes';
+            resume.innerHTML += detailResume;
+
         } else{
             window.alert('Erreur : ' + status);
         }

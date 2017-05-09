@@ -1,44 +1,42 @@
+/*
+#####ELEMENTS GENERAUX#####
+ */
+h1{
+    font-size: 1.6em;
+}
+/*
+#####FIN ELEMENTS GENERAUX#####
+ */
 
+/*
+#####CARTE#####
+*/
 #map{
     height: 100vh;
 }
 
-.fixed{
+/* Div contenant la carte Google Maps positionnée à droite */
+#fixed{
     position: fixed;
     right: 0;
     padding-right: 0;
+    padding-left: 0;
 }
 
-#lien_admin{
-    position: absolute;
-    top: 0.5vw;
-    right: 0;
-    z-index: 1;
+#texte_gauche h1, #texte_gauche h3{
+    margin-top: 10px;
 }
 
-h1{
-    font-size: 1.6em;
-}
-
-#prepa_trajet p{
-    margin: 5px 0 0 0;
+#texte_gauche h3{
+    font-size: 1.2em;
 }
 
 #prepa_trajet .form-control{
     margin-bottom: 5px;
 }
 
-#duree_max, #moyen_locomotion{
-    display: inline-block;
-    width: 45%;
-}
-
-#valider_calcul{
-    margin-top: 10px;
-}
-
-#valider_calcul input{
-    min-width: 80%;
+#ajouter_etape, #valider_calcul{
+    margin: 10px 0;
 }
 
 #afficher_lieux, #editer_trajet, #valider_calcul, .marker_editer_trajet, #resume_trajet{
@@ -47,12 +45,51 @@ h1{
 
 #resume_trajet{
     border-bottom: solid #eee 1px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 #resume_trajet .label{
     color: black;
     font-size: 1.1em;
 }
+
+#bouton_retour{
+    margin-bottom: 5px;
+}
+
+@media all and (max-width: 992px) {
+    #texte_gauche h1{
+        font-size: 1.3em;
+    }
+    #texte_gauche h3{
+        font-size: 1.1em;
+    }
+    #texte_gauche input{
+        font-size: 0.85em;
+    }
+    #resume_trajet, #construction_trajet{
+        font-size: 0.9em;
+    }
+    #construction_trajet .form-control{
+        font-size: 0.9em;
+    }
+}
+
+@media all and (max-width: 768px) {
+    #texte_gauche h1{
+        font-size: 1.3em;
+    }
+    #texte_gauche h3{
+        font-size: 1.1em;
+    }
+    #texte_gauche input{
+        font-size: 0.85em;
+    }
+}
+/*
+#####FIN CARTE#####
+ */
 
 .divACentrer {
     display: flex;
@@ -87,10 +124,31 @@ h1{
 }
 
 @media all and (max-width: 760px){
+    /* Div contenant la carte Google Maps positionnée à droite */
+    #fixed{
+        position: relative;
+    }
+
+    #boutons_balises{
+        position: relative;
+    }
+
+    #boutons_balises div{
+        margin: auto;
+    }
+
+    #boutons_all{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+}
+
+@media all and (max-width: 350px) {
     #nav_large{
         display: none;
     }
     #nav_small{
-        display: block
+        display: block;
     }
 }
