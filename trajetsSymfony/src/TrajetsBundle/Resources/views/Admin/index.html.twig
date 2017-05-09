@@ -3,8 +3,10 @@
 {% block title %}Optimisation de trajets - Admin{% endblock %}
 
 {% block body %}
+
     <div class="container">
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            {% include 'TrajetsBundle:Default:navbar.html.twig' %}
             Connecté en tant que {{ app.user.username }}
             -
             <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>

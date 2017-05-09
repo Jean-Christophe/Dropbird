@@ -79,5 +79,18 @@ h1{
 
 #bouton_valider{
     text-align: right;
-    margin-top: 20px;
+    margin: 20px 0;
+}
+
+#nav_small{
+    display: none;
+}
+
+@media all and (max-width: 760px){
+    #nav_large{
+        display: none;
+    }
+    #nav_small{
+        display: block
+    }
 }

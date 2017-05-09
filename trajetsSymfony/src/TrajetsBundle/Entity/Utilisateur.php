@@ -84,6 +84,7 @@ class Utilisateur extends BaseUser implements \Serializable, \JsonSerializable
     public function setId($id)
     {
         $this->id = $id;
+        return $this;
     }
 
     /**
@@ -92,6 +93,7 @@ class Utilisateur extends BaseUser implements \Serializable, \JsonSerializable
     public function setNom($nom)
     {
         $this->nom = $nom;
+        return $this;
     }
 
     /**
@@ -100,6 +102,18 @@ class Utilisateur extends BaseUser implements \Serializable, \JsonSerializable
     public function setPrenom($prenom)
     {
         $this->prenom = $prenom;
+        return $this;
+    }
+
+    /**
+     * @param string $email
+     */
+    public function setEmail($email)
+    {
+        $this->username = $email;
+        $this->email = $email;
+
+        return $this;
     }
 
     /**

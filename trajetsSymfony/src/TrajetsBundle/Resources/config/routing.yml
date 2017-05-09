@@ -6,10 +6,10 @@ trajets_homepage:
     path:     /
     defaults: { _controller: TrajetsBundle:Carte:affichage }
 
-trajets_admin:
-    path:     /admin
-    defaults: { _controller: TrajetsBundle:Admin:index }
-
 trajets_lieux:
     resource: "@TrajetsBundle/Resources/config/routing/lieu.yml"
     prefix:   /lieux
+
+trajets_utilisateurs:
+    resource: "@TrajetsBundle/Resources/config/routing/utilisateur.yml"
+    prefix:   /utilisateurs

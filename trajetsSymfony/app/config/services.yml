@@ -8,3 +8,13 @@ services:
         class: TrajetsBundle\Form\RegistrationType
         tags:
             - { name: form.type, alias: app_user_registration }
+
+    utilisateur.form.profile:
+        class: TrajetsBundle\Form\ProfileType
+        tags:
+            - { name: form.type, alias: app_user_profile }
+
+    utilisateur.form.change.password:
+        class: TrajetsBundle\Form\ChangePasswordType
+        tags:
+            - { name: form.type, alias: app_user_change_password }

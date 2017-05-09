@@ -79,3 +79,9 @@ fos_user:
     registration:
         form:
             type: TrajetsBundle\Form\RegistrationType
+    profile:
+        form:
+            type: TrajetsBundle\Form\ProfileType
+    change_password:
+        form:
+            type: TrajetsBundle\Form\ChangePasswordType
