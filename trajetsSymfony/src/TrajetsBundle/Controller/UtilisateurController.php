@@ -2,7 +2,7 @@
 
 namespace TrajetsBundle\Controller;
 
-use function Sodium\add;
+
 use TrajetsBundle\Entity\Utilisateur;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;

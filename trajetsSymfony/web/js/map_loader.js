@@ -12,7 +12,6 @@ var infoWindow;
 var depart;
 var etapes = [];
 var destination;
-var premierBlurDepart = true;
 var directionsDisplay;
 
 function initMap() {
@@ -96,6 +95,11 @@ function initButtonsEvents() {
     document.getElementById('show_all').addEventListener('click', showAll);
     document.getElementById('hide_all').addEventListener('click', hideAll);
     document.getElementById('adresse_depart').addEventListener('blur', selectDeparture);
+    document.getElementById('adresse_depart').addEventListener('keyup', function(e){
+        if(e.keyCode === 13){
+            selectDeparture();
+        }
+    });
     document.getElementById('duree_max').addEventListener('change', function() {
         searchWithinTime(depart);
     });
@@ -209,15 +213,14 @@ function afficherBoutonCalculer(){
 }
 
 function selectDeparture() {
-    // Si c'est la première fois que le focus quitte l'input Départ et si le champ n'est pas vide,
+    // Si le champ n'est pas vide,
     // on affiche le filtrage des lieux par distance et par moyen de locomation, ainsi que
     // l'ajout d'étapes et de la destination
-    if(premierBlurDepart && document.getElementById('adresse_depart').value !== '')
+    if(document.getElementById('adresse_depart').value !== '')
     {
         document.getElementById('afficher_lieux').style.display = 'block';
         document.getElementById('editer_trajet').style.display = 'block';
         document.getElementById('resume_trajet').style.display = 'block';
-        premierBlurDepart = false;
     }
     hideAll();
     geocoder = new google.maps.Geocoder();
@@ -258,6 +261,7 @@ function selectDeparture() {
                     afficherDepart();
                     afficherDestination();
                     searchWithinTime(depart);
+                    document.getElementById('duree_max').focus();
                 }
                 else {
                     window.alert('Erreur de géocodage : ' . status);

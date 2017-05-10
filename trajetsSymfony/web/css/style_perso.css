@@ -31,14 +31,6 @@ h1{
     font-size: 1.2em;
 }
 
-#prepa_trajet .form-control{
-    margin-bottom: 5px;
-}
-
-#ajouter_etape, #valider_calcul{
-    margin: 10px 0;
-}
-
 #afficher_lieux, #editer_trajet, #valider_calcul, .marker_editer_trajet, #resume_trajet{
     display: none;
 }
@@ -54,11 +46,21 @@ h1{
     font-size: 1.1em;
 }
 
+#valider_calcul{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    vertical-align: middle;
+}
+
+#valider_calcul .btn{
+    padding: 0;
+}
+
 #bouton_retour{
     margin-bottom: 5px;
 }
 
-@media all and (max-width: 992px) {
+@media all and (max-width: 991px) {
     #texte_gauche h1{
         font-size: 1.3em;
     }
@@ -74,17 +76,45 @@ h1{
     #construction_trajet .form-control{
         font-size: 0.9em;
     }
+
+    /* Div contenant la carte Google Maps positionnée à droite */
+    #fixed{
+        position: relative;
+    }
+
+    #boutons_balises{
+        position: relative;
+    }
+
+    #boutons_balises div{
+        margin: auto;
+    }
+
+    #boutons_all{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
 }
 
-@media all and (max-width: 768px) {
-    #texte_gauche h1{
-        font-size: 1.3em;
+@media all and (max-width: 650px) {
+    #boutons_all{
+        position: relative;
+        margin-top: 10px !important;
     }
-    #texte_gauche h3{
-        font-size: 1.1em;
+
+    #boutons_balises div{
+        display: block;
+        width: 100%;
     }
-    #texte_gauche input{
-        font-size: 0.85em;
+}
+
+@media all and (max-width: 350px) {
+    #nav_large{
+        display: none;
+    }
+    #nav_small{
+        display: block;
     }
 }
 /*
@@ -123,32 +153,3 @@ h1{
     display: none;
 }
 
-@media all and (max-width: 760px){
-    /* Div contenant la carte Google Maps positionnée à droite */
-    #fixed{
-        position: relative;
-    }
-
-    #boutons_balises{
-        position: relative;
-    }
-
-    #boutons_balises div{
-        margin: auto;
-    }
-
-    #boutons_all{
-        position: absolute;
-        bottom: 0;
-        right: 0;
-    }
-}
-
-@media all and (max-width: 350px) {
-    #nav_large{
-        display: none;
-    }
-    #nav_small{
-        display: block;
-    }
-}

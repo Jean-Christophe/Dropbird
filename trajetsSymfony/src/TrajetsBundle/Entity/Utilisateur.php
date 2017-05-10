@@ -11,11 +11,13 @@ namespace TrajetsBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Class Utilisateur
  * @package TrajetsBundle\Entity
  * @ORM\Entity
+ * @UniqueEntity("email")
  * @ORM\Table(name="dpb_utilisateurs")
  */
 class Utilisateur extends BaseUser implements \Serializable, \JsonSerializable
@@ -30,28 +32,39 @@ class Utilisateur extends BaseUser implements \Serializable, \JsonSerializable
     /**
      * @ORM\Column(type="string", length=80)
      *
-     * @Assert\NotBlank(message="Veuillez saisir votre nom.", groups={"Registration", "Profile"})
+     * @Assert\NotBlank(message="Veuillez saisir votre nom.")
      * @Assert\Length(
      *     min="3",
      *     max="80",
      *     minMessage="Le nom est trop court (3 caractères minimum).",
-     *     maxMessage="Le nom est trop long (80 caractères maximum).",
-     *     groups={"Registration", "Profile"})
+     *     maxMessage="Le nom est trop long (80 caractères maximum).")
      */
     protected $nom;
 
     /**
      * @ORM\Column(type="string", length=80)
      *
-     * @Assert\NotBlank(message="Veuillez saisir votre prénom.", groups={"Registration", "Profile"})
+     * @Assert\NotBlank(message="Veuillez saisir votre prénom.")
      * @Assert\Length(
      *     min="2",
      *     max="80",
      *     minMessage="Le prénom est trop court (2 caractères minimum).",
-     *     maxMessage="Le prénom est trop long (80 caractères maximum).",
-     *     groups={"Registration", "Profile"})
+     *     maxMessage="Le prénom est trop long (80 caractères maximum).")
      */
     protected $prenom;
+
+    /**
+     * @Assert\Email()
+     *
+     * @Assert\NotBlank(message="Veuillez saisir votre adresse e-mail.")
+     * @Assert\Length(
+     *     min="6",
+     *     max="150",
+     *     minMessage="L'adresse e-mail est trop courte (6 caractères minimum).",
+     *     maxMessage="L'adresse e-mail est trop longue (150 caractères maximum).")
+     *
+     */
+    protected $email;
 
 
     /**
@@ -115,23 +128,6 @@ class Utilisateur extends BaseUser implements \Serializable, \JsonSerializable
 
         return $this;
     }
-
-    /**
-     * Utilisateur constructor.
-     * @param $id
-     * @param $nom
-     * @param $prenom
-     * @param $email
-     * @param $password
-     * @param $statut
-     * @param $estActif
-     */
-    /*public function __construct($nom, $prenom)
-    {
-        parent::__construct();
-        $this->setNom($nom);
-        $this->setPrenom($prenom);
-    }*/
 
     function __toString()
     {

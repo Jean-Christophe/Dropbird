@@ -70,30 +70,6 @@ class Lieu implements JsonSerializable
     private $label;
 
     /**
-     * Boutique constructor.
-     * @param $id
-     * @param $nom
-     * @param $adresse
-     * @param $cpo
-     * @param $ville
-     * @param $latitude
-     * @param $longitude
-     */
-    public function __construct(/*$id, $nom, $adresse, $cpo, $ville, $latitude, $longitude, $label*/)
-    {
-        /*
-        $this->setId($id);
-        $this->setNom($nom);
-        $this->setAdresse($adresse);
-        $this->setCpo($cpo);
-        $this->setVille($ville);
-        $this->setLatitude($latitude);
-        $this->setLongitude($longitude);
-        $this->setLabel($label);
-        */
-    }
-
-    /**
      * @return mixed
      */
     public function getId()

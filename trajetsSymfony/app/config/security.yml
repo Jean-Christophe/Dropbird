@@ -1,6 +1,5 @@
 security:
   encoders:
-    #Symfony\Component\Security\Core\User\User: plaintext
     TrajetsBundle\Entity\Utilisateur: sha512
 
   role_hierarchy:
@@ -10,10 +9,6 @@ security:
   providers:
     utilisateurs:
       id: fos_user.user_provider.username_email
-    #utilisateurs:
-      #entity:
-        #class: TrajetsBundle:Utilisateur
-        #property: email
 
   firewalls:
     dev:

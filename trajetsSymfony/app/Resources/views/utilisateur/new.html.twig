@@ -47,9 +47,7 @@
             <div class="col-xs-6">
             {{ form_label(form.password) }}
             {% if not form.password.vars.valid %}
-                <div class="alert alert-danger" role="alert">
-                    {{ form_errors(form.password) }}
-                </div>
+                {{ form_errors(form.password) }}
             {% endif %}
             {{ form_widget(form.password) }}
             </div>
